@@ -1,0 +1,22 @@
+alias: Osztag_felhivas
+description: minden szerdán és pénteken reggel és este 7 kor sipákol a bot egy dc szerverre
+trigger:
+  - platform: time
+    at: "19:00:00"
+  - platform: time
+    at: "07:00:00"
+condition:
+  - condition: time
+    weekday:
+      - wed
+      - fri
+    after: "07:00:00"
+    before: "19:00:01"
+action:
+  - service: notify.discord_chat
+    data:
+      message: random szöveg Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      target:
+        - "dc channel ID"
+        - "dc channel ID"
+mode: single
